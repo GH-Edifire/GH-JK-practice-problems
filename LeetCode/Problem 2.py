@@ -1,4 +1,4 @@
-# LeetCode: Problem 1
+# LeetCode: Problem 2
 # Jonathan Kosasih
 
 # You are given two non-empty linked lists representing two non-negative integers.

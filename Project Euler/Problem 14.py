@@ -1,4 +1,4 @@
-# Project Euler: Problem 13
+# Project Euler: Problem 14
 # Jonathan Kosasih
 
 #The following iterative sequence is defined for the set of positive integers:

@@ -1,4 +1,4 @@
-# LeetCode: Problem 38
+# LeetCode: Problem 48
 # Jonathan Kosasih
 
 #You are given an n x n 2D matrix representing an image.

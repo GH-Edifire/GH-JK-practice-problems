@@ -20,11 +20,6 @@
 from collections import Counter
 class Solution:
     def exist(self, board, word):
-        """72ms! Beats 98.21% of submissions as of 23 March, 2019.
-        Time Complexity: Still O(mn*4^k) where board is m*n in size, and word length = k.
-        Uses a pre-check to skip execution for boards without the required characters.
-        Uses a DFS otherwise, with 4 branches, and a depth of k, the length of the word.
-        """
         def pre_check():
             """Checks whether board has all the characters required in word
             """

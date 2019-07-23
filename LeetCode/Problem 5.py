@@ -31,28 +31,32 @@ class Solution(object):
         return print(max(palindromes))
     
     # dynamic programming
-    def longestPalindromeDP(self, string):
-        if(len(string) < 2 or string == None):
-            return string
-        
-        longest = string[0]
-        array = [[False]*len(string)]*len(string)
-        for j in range(len(string)):
-            array[j][j] = True
-            for i in range(j):
-                # if the next row/previous column (most recent check) was a palindrome OR its the 2nd letter in substring
-                # AND letters on the left and right match of substring, it is also a palindrome
-                if((array[i + 1][j - 1] == True or i + 1 > j - 1) and string[i] == string[j]):
-                    array[i][j] = True
-                    # check for longest substring palindrome
-                    # current = right index + left index + 1
-                    if(j - i + 1 > len(longest)):
-                        longest = string[i:j+1]
-        return print(longest)
+    def longestPalindromeDP(self, s):
+        ans = ''
+        max_len = 0
+        n = len(s)
+        DP = [[0] * n for _ in range(n)]
+        for i in range(n):
+            DP[i][i] = True
+            max_len = 1
+            ans = s[i]
+        for i in range(n-1):
+            if(s[i] == s[i+1]):
+                DP[i][i+1] = True
+                ans = s[i:i+2]
+                max_len = 2
+        for j in range(n):
+            for i in range(0, j-1):
+                if(s[i] == s[j] and DP[i+1][j-1]):
+                    DP[i][j] = True
+                    if(max_len < j - i + 1):
+                        ans = s[i:j+1]
+                        max_len = j - i + 1
+        return ans
         
 sol = Solution()
 example = "babad"
 #example = "cbbd"
-sol.longestPalindrome(example)
-sol.longestPalindromeDP(example)
+#sol.longestPalindrome(example)
+print(sol.longestPalindromeDP(example))
 print("Test complete")

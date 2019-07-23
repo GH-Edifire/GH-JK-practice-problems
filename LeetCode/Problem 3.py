@@ -23,13 +23,11 @@ class Solution(object):
     def lengthOfLongestSubstring(self, string):
         start = maxLength = 0
         usedChar = {}
-        
         for i in range(len(string)):
-            if string[i] in usedChar and start <= usedChar[string[i]]:
+            if(string[i] in usedChar and start <= usedChar[string[i]]):
                 start = usedChar[string[i]] + 1
             else:
                 maxLength = max(maxLength, i - start + 1)
-
             usedChar[string[i]] = i
 
         return maxLength            

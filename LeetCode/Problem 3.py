@@ -21,35 +21,23 @@
 #------------------------------------------------------------------
 class Solution(object):
     def lengthOfLongestSubstring(self, string):
-        highestCount = 0
-        count = 0
-        highestSubString = ""
-        subString = ""
-        stringSet = set("") # Found out later you dont even need to declare a set, just check if a char is in the subString
-        for char in string:
-            if(char in stringSet):
-                if(count > highestCount):
-                    highestCount = count
-                    highestSubString = subString
-                    count = 1
-                    subString = char
-                    stringSet.clear()
-                    stringSet.add(char)
-                else:
-                    count = 1
-                    subString = ""
-            else:  
-                subString += char
-                stringSet.add(char)
-                count += 1
+        start = maxLength = 0
+        usedChar = {}
         
-        return highestCount, highestSubString
-            
+        for i in range(len(string)):
+            if string[i] in usedChar and start <= usedChar[string[i]]:
+                start = usedChar[string[i]] + 1
+            else:
+                maxLength = max(maxLength, i - start + 1)
+
+            usedChar[string[i]] = i
+
+        return maxLength            
 sol = Solution()
 #example = "abcabcbb"
 #example = "bbbbb"
 example = "pwwkew"
+example = " "
 print("Input: \"" + example +"\"")
 answer = sol.lengthOfLongestSubstring(example)
-print("Output: " + str(answer[0]))
-print("Explanation: The answer is \"" + answer[1] + "\", with the length of " + str(answer[0]))
+print(str(answer))

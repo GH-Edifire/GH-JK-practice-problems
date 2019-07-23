@@ -38,25 +38,44 @@
 #             Thefore INT_MIN (−2^31) is returned.
 #------------------------------------------------------------------
 class Solution(object):
-    def myAtoi(self, string):
+    def myAtoi(self, str):
         """
         :type str: str
         :rtype: int
         """
-        check = ""
-        start = False
-        string = string.strip()
-        for char in string:
-            if(char == "-" or char == "+" or char.isdigit()):
-                check += char
-                start = True
-            if(start and char.isalpha()):
-                break
-            elif(not start and char.isalpha()):
-                return 0
-        if(check == "-" or check == "+"):
+        if(not str):
             return 0
-        return max(-(2**31),(min(int(check),2**31 - 1)))
+
+        str = str.lstrip()
+        if(not str):
+            return 0
+
+        i = 0
+        negative = False
+        if(str[0] == '+'):
+            i += 1
+        elif(str[0] == '-'):
+            negative = True
+            i += 1
+        elif(not str[0].isdigit()):
+            return 0
+
+        value = 0
+        while(i < len(str) and str[i].isdigit()):
+            value *= 10
+            value += int(str[i])
+            i += 1
+        if(negative):
+            value = -value
+
+        INT_MAX = 2**31 - 1
+        INT_MIN = -2**31
+        if(value > INT_MAX):
+            return INT_MAX
+        elif(value < INT_MIN):
+            return INT_MIN
+        else:
+            return value
         
 sol = Solution()
 example1 = "42"
@@ -65,9 +84,11 @@ example3 = "4193 with words"
 example4 = "words and 987"
 example5 = "-91283472332"
 example6 = "+"
+example7 = ""
 print(sol.myAtoi(example1))
 print(sol.myAtoi(example2))
 print(sol.myAtoi(example3))
 print(sol.myAtoi(example4))
 print(sol.myAtoi(example5))
 print(sol.myAtoi(example6))
+print(sol.myAtoi(example7))

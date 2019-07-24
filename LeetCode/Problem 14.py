@@ -21,16 +21,19 @@ class Solution(object):
         :type strs: List[str]
         :rtype: str
         """
-        if(strs == None):
-            return "\"\""
+        if(not strs):
+            return ""
         prefix = min(strs,key=len)
         for index in range(len(prefix)):
             for entry in strs:
                 if(entry[index] != prefix[index]):
-                    return prefix[:index] if index > 0 else "\"\""
+                    return prefix[:index] if index > 0 else ""
+        return prefix
    
 sol = Solution()
 example1 = ["flower","flow","flight"]
 example2 = ["dog","racecar","car"]
+example3 = ["",""]
 print(sol.longestCommonPrefix(example1))
 print(sol.longestCommonPrefix(example2))
+print(sol.longestCommonPrefix(example3))

@@ -39,6 +39,24 @@ class Solution(object):
             mainPointer.next = mainPointer.next.next
         return head
     
+    # slightly faster but same concept
+    def removeNthFromEndAlt(self, head, n):
+        """
+        :type head: ListNode
+        :type n: int
+        :rtype: ListNode
+        """
+        fast = slow = head
+        for _ in range(n):
+            fast = fast.next
+        if not fast:
+            return head.next
+        while fast.next:
+            fast = fast.next
+            slow = slow.next
+        slow.next = slow.next.next
+        return head
+    
     def printLinkedList(self, head):
         while(head is not None):
             print(str(head.val))

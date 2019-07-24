@@ -39,10 +39,28 @@ class Solution(object):
             if(char == "(" or char == "{" or char == "["):
                 stack.append(char)
             else:
+                if(len(stack) == 0):
+                    return False
                 test = stack.pop()
                 if((char == ")" and test != "(") or (char == "}" and test != "{") or (char == "]" and test != "[")):
                     return False
-        return True
+        if(len(stack) == 0):
+            return True
+        return False
+    
+    # looks a bit cleaner
+    def isValidAlt(self,s):
+        stack = []
+        dict = {"]":"[", "}":"{", ")":"("}
+        for char in s:
+            if char in dict.values():
+                stack.append(char)
+            elif char in dict.keys():
+                if stack == [] or dict[char] != stack.pop():
+                    return False
+            else:
+                return False
+        return stack == []
         
 sol = Solution()
 example1 = "()"
@@ -50,7 +68,7 @@ example2 = "()[]{}"
 example3 = "(]"
 example4 = "([)]"
 example5 = "{[]}"
-example6 = ""
+example6 = "]"
 print(sol.isValid(example1))
 print(sol.isValid(example2))
 print(sol.isValid(example3))

@@ -35,6 +35,21 @@ class Solution(object):
                 previous = nums[index]
             index += 1
         return len(nums)
+    
+    # even simpler and faster, since we don't care about the array but rather the length,
+    # so just count different numbers of the sorted array
+    def removeDuplicates(self, A):
+        if(not A):
+            return 0
+
+        newTail = 0
+
+        for i in range(1, len(A)):
+            if A[i] != A[newTail]:
+                newTail += 1
+                A[newTail] = A[i]
+
+        return newTail + 1
         
 sol = Solution()
 nums = [1,1,2]

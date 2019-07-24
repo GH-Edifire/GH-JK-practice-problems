@@ -26,7 +26,7 @@ class Solution(object):
         :type needle: str
         :rtype: int
         """
-        if(haystack is None or haystack == ""):
+        if(haystack is None):
             return 0
         index = 0
         while(index < (len(haystack) - len(needle)+1)):
@@ -45,5 +45,5 @@ needle = "bba"
 print(str(sol.strStr(haystack, needle)))
 
 haystack = ""
-needle = "aaa"
+needle = "a"
 print(str(sol.strStr(haystack, needle)))

@@ -10,6 +10,7 @@
 #Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.
 #------------------------------------------------------------------
 class Solution(object):
+    #works but slow
     def romanToInt(self, string):
         """
         :type s: str
@@ -28,6 +29,20 @@ class Solution(object):
                 totalValue -= 2*values['C']
             precedingChar = char
         return totalValue
+    
+    def romanToIntAlt(self, string):
+        """
+        :type s: str
+        :rtype: int
+        """
+        values = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}
+        totalValue = 0
+        for i in range(len(string)-1):
+            if(values[string[i]] < values[string[i+1]]):
+                totalValue -= values[string[i]]
+            else:
+                totalValue += values[string[i]]
+        return totalValue + values[string[-1]]
                 
         
 sol = Solution()
@@ -42,3 +57,4 @@ print(sol.romanToInt(example2))
 print(sol.romanToInt(example3))
 print(sol.romanToInt(example4))
 print(sol.romanToInt(example5))
+print(sol.romanToIntAlt(example5))

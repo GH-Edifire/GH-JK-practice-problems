@@ -17,8 +17,8 @@ class Solution(object):
         """
         if(not nums or len(nums) <= 0):
             return 0
-        currentSum = 0
-        greatestSum = 0
+        currentSum = nums[0]
+        greatestSum = nums[0]
         for entry in nums[1:]:
             currentSum = max(entry, currentSum + entry)
             greatestSum = max(greatestSum, currentSum)
@@ -27,4 +27,5 @@ class Solution(object):
         
 sol = Solution()
 example = [-2,1,-3,4,-1,2,1,-5,4]
+example = [-1,-2,5]
 print(str(sol.maxSubArray(example)))

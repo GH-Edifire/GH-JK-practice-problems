@@ -47,4 +47,4 @@ class Solution(object):
                 
 
 sol = Solution()
-print(sol.countAndSay(10))
+print(sol.countAndSay(4))

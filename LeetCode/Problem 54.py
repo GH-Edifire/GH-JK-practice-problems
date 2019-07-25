@@ -27,6 +27,8 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: List[int]
         """
+        if(not matrix or len(matrix) == 0):
+            return []
         top = 0
         bottom = len(matrix)
         left = 0

@@ -153,6 +153,8 @@ def next_permutation(arr):
     arr[i : ] = arr[len(arr) - 1 : i - 1 : -1]
     return True
 
+def is_perm(a,b): return sorted(str(a))==sorted(str(b))
+
 
 # Decorator. The underlying function must take only positional arguments, no keyword arguments.
 class memoize(object):

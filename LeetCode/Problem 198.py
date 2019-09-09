@@ -39,7 +39,7 @@ class Solution(object):
         return memo[-1]
     
     # For constant space, but slower
-    def rob(self, nums):
+    def rob2(self, nums):
         """
         :type nums: List[int]
         :rtype: int

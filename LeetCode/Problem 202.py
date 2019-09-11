@@ -22,6 +22,7 @@ class Solution(object):
         """
         if(not n):
             return False
+        # could also build this empty in the while loop
         memo = {"0": 0,"1": 1, "2": 4, "3": 9, "4": 16, "5": 25, "6": 36, "7": 49, "8": 64,"9": 81}
         seen = set()
         string = str(n)

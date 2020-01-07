@@ -17,6 +17,7 @@ using std::vector;
 using std::map;
 using std::unordered_map;
 using std::set;
+using std::stack;
 
 /**
  * Definition for a binary tree node.
@@ -53,17 +54,16 @@ public:
 		if (root == NULL) {
 			return answer;
 		}
-		vector<TreeNode*> stack;
-		while (!stack.empty() || root != NULL) {
-			if (root) {
-				stack.push_back(root);
+		stack<TreeNode*> stack;
+		while (!stack.empty() || root) {
+			while (root) {
+				stack.push(root);
 				root = root->left;
 			}
-			else {
-				TreeNode* temp = stack.pop_back();
-				answer.push_back(temp);
-				root = temp->right;
-			}
+			root = stack.top();
+			stack.pop();
+			answer.push_back(root->val);
+			root = root->right;
 		}
 		return answer;
 	}

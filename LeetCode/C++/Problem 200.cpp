@@ -1,4 +1,4 @@
-// LeetCode: Problem 198
+// LeetCode: Problem 200
 // Jonathan Kosasih
 /*
 Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. 
